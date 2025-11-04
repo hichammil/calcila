@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta http-equiv="refresh" content="">
+</head>
+<body>
+    <style>
+.container{
+  background-image: url(img/back.jpg);
+  background-size: 100% 100%;
+    padding: 0;
+    margin: 0;
+text-align: center;
+    width: 95vw;
+    height: 90vh;
+    border: solid 1px;
+     border-radius: 10px;
+      font-size: 75%;
+}
+h1{ padding: 5px;}
+input{
+    height: 5vh;
+    font-size: 100%;
+    padding: 0;margin: 5px;
+    width: 20vw;
+    margin-top: 2vh;
+    border-radius: 10px;
+     background-color: rgba(104, 124, 233, 0.356);
+
+}
+button{
+    height: 5vh;
+    margin-top: 2vh;
+    border-radius: 10px;
+    background-color: rgba(132, 212, 186, 0.521);
+}
+
+.calcila{
+    width: 92vw;
+    height: 50vh;
+   border-radius: 10px; 
+    margin:5%;
+}
+
+.k1{
+width: 97%;
+height:5; border:  1px solid;
+display: flex;
+padding: 2px;
+margin-top: 10px;
+ border-radius: 10px;
+  background-color: rgba(204, 223, 152, 0.356);
+}
+.k2{
+    background-color: rgba(204, 223, 152, 0.356);
+     border-radius: 10px;
+width: 97%;
+height:5; border:  1px solid;
+display: flex;
+padding: 2px;
+margin-top: 10px;
+}
+.k3{
+   background-color: rgba(204, 223, 152, 0.356);
+width: 97%;
+ border-radius: 10px;
+height:5; border:  1px solid;
+display: flex;
+padding: 2px;
+margin-top: 10px;
+}
+.k4{
+   background-color: rgba(204, 223, 152, 0.356);
+     border-radius: 10px;
+width: 97%;
+height:5; border:  1px solid;
+display: flex;
+padding: 2px;
+margin-top: 10px;
+}
+.mess{
+      background-color: rgba(204, 223, 152, 0.356);
+    width: 90vw;
+    height: 20vh;
+    border:  solid 1px;
+    padding: 0px;
+    margin-top: 5vh;
+      border-radius: 10px;
+      text-align: center;
+  
+}
+
+    
+
+
+    </style>
+    
+<div class="container">
+<div class="calcila">
+
+    <div class="k1"><input id="x" placeholder="000.000" type="text"> <h3>__+__</h3>
+<input id="w" placeholder="000.000" type="text"><button onclick="h()">___=___</button>
+<h1 id="k">00.000</h1></div>
+
+    <div class="k2"><input id="p" placeholder="000.000" type="text"> <h3>__-__</h3>
+<input id="o" placeholder="000.000" type="text"><button onclick="b()">___=___</button>
+<h1 id="j">00.000</h1></div>
+
+    <div class="k3"><input id="y" placeholder="000.000" type="text"> <h3>__x__</h3>
+<input id="i" placeholder="000.000" type="text"><button onclick="c()">___=___</button>
+<h1 id="u">00.000</h1></div>
+
+    <div class="k4"><input id="e" placeholder="000.000" type="text"> <h3>__/__</h3>
+<input id="z" placeholder="000.000" type="text"><button onclick="d()">___=___</button>
+<h1 id="l">00.000</h1></div>
+</div>
+<center>
+  
+<div class="mess">
+
+  <h1>HICHAM_APP</h1>
+  <h2>rani nrigl fi had al aplication  hablatni men rasi  lmohim 
+    khdamtha men rasi bla ma nchof fi app wakhdakhora wela salam
+  </h2>
+</div></center>
+</div>
+
+
+
+
+
+
+</div>   
+<script>
+    function h(){
+let x=document.getElementById ("x").value;
+let w=document.getElementById ("w").value;
+let k=document.getElementById ("k");
+x=Number(x);
+w=Number(w);
+k.innerHTML= x + w ;}
+
+    function b(){
+let x=document.getElementById ("p").value;
+let w=document.getElementById ("o").value;
+let k=document.getElementById ("j");
+x=Number(x);
+w=Number(w);
+k.innerHTML= x - w ;}
+
+    function c(){
+let x=document.getElementById ("y").value;
+let w=document.getElementById ("i").value;
+let k=document.getElementById ("u");
+x=Number(x);
+w=Number(w);
+k.innerHTML= x * w ;}
+
+    function d(){
+let x=document.getElementById ("e").value;
+let w=document.getElementById ("z").value;
+let k=document.getElementById ("l");
+x=Number(x);
+w=Number(w);
+k.innerHTML= x / w ;}
+</script>
+
+
+
+
+
+</body>
+</html>
