@@ -1,0 +1,17 @@
+
+body{
+display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.container{
+border-radius: 10px;
+border:  solid 1px;
+padding: 0;
+width: 99%;
+height: 98vh;
+background-color: rgba(65, 143, 167, 0.164);
+}
