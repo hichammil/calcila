@@ -1,27 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <meta http-equiv="refresh" content="">
+  <meta charset="UTF-8">
+  <title>إظهار وإخفاء النص</title>
+  <style>
+    body {
+      text-align: center;
+      margin-top: 100px;
+      font-family: Arial;
+    }
+
+    #text {
+      font-size: 20px;
+      color: blue;
+      display: none; /* النص مخفي في البداية */
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-<video autoplay muted loop class="back" src="ved/back gro.mp4"></video>
-<div class="rr">
-<h1>DJALILE-FERHAWI</h1>
 
-</div>
+  <div id="text">مرحباً بك في صفحتي 😊</div>
+  <button onclick="toggleText()">إظهار / إخفاء</button>
 
+  <script>
+    let visible = false; // الحالة الأولى: النص مخفي
 
+    function toggleText() {
+      const text = document.getElementById("text");
 
+      if (visible) {
+        text.style.display = "none"; // إخفاء النص
+      } else {
+        text.style.display = "block"; // إظهار النص
+      }
 
+      visible = !visible; // تبديل الحالة
+    }
+  </script>
 
-
-
-
-</div>   
 </body>
 </html>
