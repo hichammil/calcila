@@ -1,49 +1,53 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>إظهار وإخفاء النص</title>
-  <style>
-    body {
-      text-align: center;
-      margin-top: 100px;
-      font-family: Arial;
-    }
-
-    #text {
-      font-size: 20px;
-      color: blue;
-      display: none; /* النص مخفي في البداية */
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta http-equiv="refresh" content="">
 </head>
 <body>
+    
+    <style>
+      
+img{
+    width: 0vw;
+    height: 0vh;
+    border-radius: 10px;
+    transition: 1s;
+margin-top: 10vh;
+}
+button{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 10px;
+    background-color: rgba(195, 255, 127, 0.315);
+}
+    </style>
+    <center>
+<img id="imm" src="img/back.jpg" alt="">
+<div class="bbbb">
+<button onclick="butt()">image look</button>
+</div>
+    </center>
+ <script>
+let xx=false ;
+function butt(){
+let imm=document.getElementById ("imm")
 
-  <div id="text">مرحباً بك في صفحتي 😊</div>
-  <button onclick="toggleText()">إظهار / إخفاء</button>
+if (xx){
+imm.style.width="0vw"
+imm.style.height ="0vh"
+}
+else{
+imm.style.width="60vw"
+imm.style.height ="30vh"
+}
+xx=!xx;
+}
 
-  <script>
-    let visible = false; // الحالة الأولى: النص مخفي
 
-    function toggleText() {
-      const text = document.getElementById("text");
 
-      if (visible) {
-        text.style.display = "none"; // إخفاء النص
-      } else {
-        text.style.display = "block"; // إظهار النص
-      }
-
-      visible = !visible; // تبديل الحالة
-    }
-  </script>
+ </script>
 
 </body>
 </html>
