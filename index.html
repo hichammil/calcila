@@ -7,47 +7,131 @@
     <meta http-equiv="refresh" content="">
 </head>
 <body>
-    
-    <style>
-      
+<style>
+    .container{
+        background-color: antiquewhite;
+width: 80%;
+max-width: 600px;
+margin:0 auto;
+padding: 20px;
+border-radius: 10px;
+border: solid 1px;
+text-align: center;
+height: 90vh;
+
+    }
+
+.test{
+  
+    height: 5vh;
+    background-color: aquamarine;
+    border-radius: 10px ;
+    padding: 10px;
+   margin-top: 10px;
+   transition: 0.5s;
+   max-width: 500px;
+   font-size: 0%;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 img{
-    width: 0vw;
-    height: 0vh;
-    border-radius: 10px;
-    transition: 1s;
-margin-top: 10vh;
+    width: 10vw;
+    height: 5vh;
+    border-radius: inherit;
+    max-width: inherit;
 }
-button{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    border-radius: 10px;
-    background-color: rgba(195, 255, 127, 0.315);
-}
-    </style>
-    <center>
-<img id="imm" src="img/back.jpg" alt="">
-<div class="bbbb">
-<button onclick="butt()">image look</button>
+
+
+
+</style>
+
+
+    <div id="con" class="container">
+      <h1>HICHAM -TAHAR</h1>
+<div id="a" class="test">
+<img onclick="a()" src="img/home.png" alt="">
+<ul style="color: red ;" onclick="red()">- red color</ul>
+<ul onclick="blue()" style="color: blue;">- blue color</ul>
+<ul onclick="black()" style="color: black;">- black color</ul>
+
 </div>
-    </center>
- <script>
-let xx=false ;
-function butt(){
-let imm=document.getElementById ("imm")
 
-if (xx){
-imm.style.width="0vw"
-imm.style.height ="0vh"
+
+
+
+    </div>
+<script>
+let x=false;
+function a() {
+    let w=document.getElementById ("a");
+    if (x){
+
+        w.style.fontSize ="0%";
+        w.style.height ="5vh";
+
+    }
+    else{
+ w.style.fontSize ="100%";
+        w.style.height ="20vh";
+
+    }
+    x=!x;
+    
 }
+
+let rr=false;
+function red(){
+    let aa=document.getElementById ("con");
+
+    if (rr){
+
+        aa.style.backgroundColor ="antiquewhite"
+      
+
+    }
 else{
-imm.style.width="60vw"
-imm.style.height ="30vh"
+aa.style.backgroundColor ="red"
 }
-xx=!xx;
+    rr=!rr;
+    
 }
 
+let oob=false;
+function blue(){
+    let aa=document.getElementById ("con");
 
+    if (oob){
 
- </script>
+        aa.style.backgroundColor ="antiquewhite"
+      
+
+    }
+else{
+aa.style.backgroundColor ="blue"
+}
+    oob=!oob;
+    
+}
+
+let alo=false;
+function black(){
+    let aa=document.getElementById ("con");
+
+    if (alo){
+
+   aa.style.color ="black"
+
+        aa.style.backgroundColor ="antiquewhite"
+    }
+else{
+aa.style.backgroundColor ="black"
+aa.style.color ="antiquewhite"
+}
+    alo=!alo;
+    
+}
+
+</script>
+
 
 </body>
 </html>
