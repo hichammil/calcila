@@ -1,137 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <meta http-equiv="refresh" content="">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كاميرا السيلفي</title>
+<style>
+  body {
+    background: #0f172a;
+    color: #00ffff;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 15px;
+  }
+
+  video, canvas {
+    border: 2px solid #00ffff;
+    border-radius: 10px;
+    width: 320px;
+    height: 240px;
+    object-fit: cover;
+  }
+
+  button {
+    background: #00ffff;
+    color: #0f172a;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: #ff00ff;
+    color: white;
+  }
+</style>
 </head>
 <body>
-<style>
-    .container{
-        background-color: antiquewhite;
-width: 80%;
-max-width: 600px;
-margin:0 auto;
-padding: 20px;
-border-radius: 10px;
-border: solid 1px;
-text-align: center;
-height: 90vh;
 
-    }
+  <h2>📸 كاميرا السيلفي</h2>
 
-.test{
-  
-    height: 5vh;
-    background-color: aquamarine;
-    border-radius: 10px ;
-    padding: 10px;
-   margin-top: 10px;
-   transition: 0.5s;
-   max-width: 500px;
-   font-size: 0%;
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-img{
-    width: 10vw;
-    height: 5vh;
-    border-radius: inherit;
-    max-width: inherit;
-}
+  <video id="camera" autoplay playsinline></video>
+  <canvas id="snapshot" width="320" height="240" style="display:none;"></canvas>
 
+  <div>
+    <button id="startBtn">تشغيل الكاميرا</button>
+    <button id="captureBtn">التقاط صورة</button>
+  </div>
 
+  <script>
+    const video = document.getElementById('camera');
+    const canvas = document.getElementById('snapshot');
+    const startBtn = document.getElementById('startBtn');
+    const captureBtn = document.getElementById('captureBtn');
+    let stream;
 
-</style>
+    // تشغيل الكاميرا
+    startBtn.addEventListener('click', async () => {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+      } catch (error) {
+        alert('❌ لا يمكن تشغيل الكاميرا، تحقق من الأذونات.');
+        console.error(error);
+      }
+    });
 
+    // التقاط الصورة
+    captureBtn.addEventListener('click', () => {
+      if (!stream) {
+        alert('قم بتشغيل الكاميرا أولاً!');
+        return;
+      }
 
-    <div id="con" class="container">
-      <h1>HICHAM -TAHAR</h1>
-<div id="a" class="test">
-<img onclick="a()" src="img/home.png" alt="">
-<ul style="color: red ;" onclick="red()">- red color</ul>
-<ul onclick="blue()" style="color: blue;">- blue color</ul>
-<ul onclick="black()" style="color: black;">- black color</ul>
+      const context = canvas.getContext('2d');
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-</div>
+      // تحويل الصورة إلى رابط تحميل
+      const imageUrl = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = imageUrl;
+      link.download = 'selfie.png';
+      link.click();
 
-
-
-
-    </div>
-<script>
-let x=false;
-function a() {
-    let w=document.getElementById ("a");
-    if (x){
-
-        w.style.fontSize ="0%";
-        w.style.height ="5vh";
-
-    }
-    else{
- w.style.fontSize ="100%";
-        w.style.height ="20vh";
-
-    }
-    x=!x;
-    
-}
-
-let rr=false;
-function red(){
-    let aa=document.getElementById ("con");
-
-    if (rr){
-
-        aa.style.backgroundColor ="antiquewhite"
-      
-
-    }
-else{
-aa.style.backgroundColor ="red"
-}
-    rr=!rr;
-    
-}
-
-let oob=false;
-function blue(){
-    let aa=document.getElementById ("con");
-
-    if (oob){
-
-        aa.style.backgroundColor ="antiquewhite"
-      
-
-    }
-else{
-aa.style.backgroundColor ="blue"
-}
-    oob=!oob;
-    
-}
-
-let alo=false;
-function black(){
-    let aa=document.getElementById ("con");
-
-    if (alo){
-
-   aa.style.color ="black"
-
-        aa.style.backgroundColor ="antiquewhite"
-    }
-else{
-aa.style.backgroundColor ="black"
-aa.style.color ="antiquewhite"
-}
-    alo=!alo;
-    
-}
-
-</script>
-
+      alert('✅ تم التقاط الصورة! يمكنك حفظها.');
+    });
+  </script>
 
 </body>
 </html>
