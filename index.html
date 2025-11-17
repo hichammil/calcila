@@ -1,97 +1,308 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>كاميرا السيلفي</title>
+<title>نظام الطلبيات</title>
+
 <style>
-  body {
-    background: #0f172a;
-    color: #00ffff;
-    font-family: monospace;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    gap: 15px;
-  }
+    body {
+        font-family: Tahoma;
+        background: #f3f3f3;
+        padding: 20px;
+    }
 
-  video, canvas {
-    border: 2px solid #00ffff;
-    border-radius: 10px;
-    width: 320px;
-    height: 240px;
-    object-fit: cover;
-  }
+    .form-container {
+        background: #fff;
+        padding: 20px;
+        width: 380px;
+        margin: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px #ccc;
+    }
 
-  button {
-    background: #00ffff;
-    color: #0f172a;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-  }
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+        border-radius: 5px;
+        border: 1px solid #aaa;
+    }
 
-  button:hover {
-    background: #ff00ff;
-    color: white;
-  }
+    label { font-weight: bold; }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #3498db;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+    .order-item {
+        background: #fff;
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        box-shadow: 0 0 5px #bbb;
+        cursor: pointer;
+    }
+
+    #detailsBox {
+        background: #fff;
+        padding: 15px;
+        margin-top: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px #aaa;
+        display: none;
+    }
+
+    /* ⬇⬇⬇ تحسين عرض الصور ⬇⬇⬇ */
+    .images {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .images img {
+        width: 100%;
+        height: 110px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+    /* ⬆⬆⬆ تحسين عرض الصور ⬆⬆⬆ */
+
+    .btns button {
+        width: 32%;
+        display: inline-block;
+    }
+
+    .editBtn { background: #f1c40f; }
+    .doneBtn { background: #27ae60; }
+    .delBtn  { background: #e74c3c; }
+
 </style>
 </head>
 <body>
 
-  <h2>📸 كاميرا السيلفي</h2>
+<div class="form-container">
 
-  <video id="camera" autoplay playsinline></video>
-  <canvas id="snapshot" width="320" height="240" style="display:none;"></canvas>
+    <h2 style="text-align:center;">نموذج طلبية</h2>
 
-  <div>
-    <button id="startBtn">تشغيل الكاميرا</button>
-    <button id="captureBtn">التقاط صورة</button>
-  </div>
+    <label>بحث برقم الهاتف</label>
+    <input type="text" id="searchPhone" placeholder="رقم الهاتف" oninput="searchOrder()">
 
-  <script>
-    const video = document.getElementById('camera');
-    const canvas = document.getElementById('snapshot');
-    const startBtn = document.getElementById('startBtn');
-    const captureBtn = document.getElementById('captureBtn');
-    let stream;
+    <hr><br>
 
-    // تشغيل الكاميرا
-    startBtn.addEventListener('click', async () => {
-      try {
-        stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        video.srcObject = stream;
-      } catch (error) {
-        alert('❌ لا يمكن تشغيل الكاميرا، تحقق من الأذونات.');
-        console.error(error);
-      }
+    <label>الاسم الكامل</label>
+    <input type="text" id="name">
+
+    <label>رقم الهاتف</label>
+    <input type="tel" id="phone">
+
+    <label>تفاصيل الطلبية</label>
+    <textarea id="details" rows="3"></textarea>
+
+    <label>موعد التسليم</label>
+    <input type="date" id="time">
+
+    <label>المبلغ المتفق عليه</label>
+    <input type="number" id="price">
+
+    <label>الدفعة الأولى</label>
+    <input type="number" id="firstPay" oninput="calcRemain()">
+
+    <label>المبلغ المتبقي</label>
+    <input type="number" id="remain" readonly style="background:#eee;">
+
+    <label>صور الطلبية</label>
+    <input type="file" id="images" accept="image/*" multiple>
+
+    <button onclick="saveOrder()">حفظ الطلبية</button>
+</div>
+
+<!-- قائمة الطلبات -->
+<div id="ordersList" style="margin-top:25px;"></div>
+
+<!-- تفاصيل الطلبية -->
+<div id="detailsBox"></div>
+
+
+<script>
+
+let orders = [];
+let currentIndex = -1;
+
+// تحميل التخزين
+if (localStorage.getItem("orders")) {
+    orders = JSON.parse(localStorage.getItem("orders"));
+}
+displayOrders();
+
+function saveStorage() {
+    localStorage.setItem("orders", JSON.stringify(orders));
+}
+
+// حساب المتبقي
+function calcRemain() {
+    let price = Number(document.getElementById("price").value);
+    let first = Number(document.getElementById("firstPay").value);
+    document.getElementById("remain").value = price - first;
+}
+
+// تحويل الصور Base64
+function convertImages(files, callback) {
+    let images = [];
+    let count = files.length;
+
+    if (count === 0) { callback(images); return; }
+
+    for (let file of files) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            images.push(e.target.result);
+            count--;
+            if (count === 0) callback(images);
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+// حفظ الطلبية
+function saveOrder() {
+    let files = document.getElementById("images").files;
+
+    convertImages(files, function(imgArray) {
+
+        let order = {
+            name: document.getElementById("name").value,
+            phone: document.getElementById("phone").value,
+            details: document.getElementById("details").value,
+            time: document.getElementById("time").value,
+            price: Number(document.getElementById("price").value),
+            firstPay: Number(document.getElementById("firstPay").value),
+            remain: Number(document.getElementById("remain").value),
+            images: imgArray,
+            delivered: false
+        };
+
+        if (!order.phone) return;
+
+        orders.push(order);
+        saveStorage();
+        displayOrders();
+        clearFields();
     });
+}
 
-    // التقاط الصورة
-    captureBtn.addEventListener('click', () => {
-      if (!stream) {
-        alert('قم بتشغيل الكاميرا أولاً!');
-        return;
-      }
+// مسح الخانات
+function clearFields() {
+    document.getElementById("name").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("details").value = "";
+    document.getElementById("time").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("firstPay").value = "";
+    document.getElementById("remain").value = "";
+    document.getElementById("images").value = "";
+}
 
-      const context = canvas.getContext('2d');
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+// عرض الطلبات
+function displayOrders(list = orders) {
+    let box = document.getElementById("ordersList");
+    box.innerHTML = "";
 
-      // تحويل الصورة إلى رابط تحميل
-      const imageUrl = canvas.toDataURL('image/png');
-      const link = document.createElement('a');
-      link.href = imageUrl;
-      link.download = 'selfie.png';
-      link.click();
-
-      alert('✅ تم التقاط الصورة! يمكنك حفظها.');
+    list.forEach((o, i) => {
+        box.innerHTML += `
+            <div class="order-item" onclick="showDetails(${i})">
+                <strong>${o.name}</strong> - ${o.phone}<br>
+                المتبقي: ${o.remain} دج
+            </div>
+        `;
     });
-  </script>
+}
+
+// عرض التفاصيل
+function showDetails(i) {
+    currentIndex = i;
+    let o = orders[i];
+    let box = document.getElementById("detailsBox");
+
+    box.style.display = "block";
+
+    box.innerHTML = `
+        <h3>تفاصيل الطلبية</h3>
+        <p><strong>الاسم:</strong> ${o.name}</p>
+        <p><strong>الهاتف:</strong> ${o.phone}</p>
+        <p><strong>التسليم:</strong> ${o.time}</p>
+        <p><strong>التفاصيل:</strong> ${o.details}</p>
+        <p><strong>المبلغ:</strong> ${o.price}</p>
+        <p><strong>الدفعة الأولى:</strong> ${o.firstPay}</p>
+        <p><strong>المتبقي:</strong> ${o.remain}</p>
+
+        <h3>الصور</h3>
+        <div class="images">
+            ${o.images.map(img => `<img src="${img}">`).join("")}
+        </div>
+
+        <div class="btns">
+            <button class="editBtn" onclick="editOrder()">تعديل</button>
+            <button class="doneBtn" onclick="finishOrder()">تسليم</button>
+            <button class="delBtn" onclick="deleteOrder()">حذف</button>
+        </div>
+    `;
+}
+
+// تعديل الطلبية
+function editOrder() {
+    let o = orders[currentIndex];
+
+    document.getElementById("name").value = o.name;
+    document.getElementById("phone").value = o.phone;
+    document.getElementById("details").value = o.details;
+    document.getElementById("time").value = o.time;
+    document.getElementById("price").value = o.price;
+    document.getElementById("firstPay").value = o.firstPay;
+    document.getElementById("remain").value = o.remain;
+
+    document.getElementById("detailsBox").style.display = "none";
+
+    orders.splice(currentIndex, 1);
+    saveStorage();
+    displayOrders();
+}
+
+// تسليم الطلبية
+function finishOrder() {
+    orders[currentIndex].delivered = true;
+    saveStorage();
+    displayOrders();
+
+    document.getElementById("detailsBox").style.display = "none";
+}
+
+// حذف الطلبية
+function deleteOrder() {
+    orders.splice(currentIndex, 1);
+    saveStorage();
+    displayOrders();
+
+    document.getElementById("detailsBox").style.display = "none";
+}
+
+// البحث
+function searchOrder() {
+    let text = document.getElementById("searchPhone").value;
+    let filtered = orders.filter(o => o.phone.includes(text));
+    displayOrders(filtered);
+}
+
+</script>
 
 </body>
 </html>
