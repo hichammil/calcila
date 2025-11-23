@@ -1,308 +1,114 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>نظام الطلبيات</title>
-
-<style>
-    body {
-        font-family: Tahoma;
-        background: #f3f3f3;
-        padding: 20px;
-    }
-
-    .form-container {
-        background: #fff;
-        padding: 20px;
-        width: 380px;
-        margin: auto;
-        border-radius: 8px;
-        box-shadow: 0 0 10px #ccc;
-    }
-
-    input, textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 12px;
-        border-radius: 5px;
-        border: 1px solid #aaa;
-    }
-
-    label { font-weight: bold; }
-
-    button {
-        width: 100%;
-        padding: 12px;
-        background: #3498db;
-        border: none;
-        color: white;
-        font-size: 16px;
-        border-radius: 6px;
-        cursor: pointer;
-        margin-bottom: 10px;
-    }
-
-    .order-item {
-        background: #fff;
-        padding: 10px;
-        border-radius: 6px;
-        margin-bottom: 10px;
-        box-shadow: 0 0 5px #bbb;
-        cursor: pointer;
-    }
-
-    #detailsBox {
-        background: #fff;
-        padding: 15px;
-        margin-top: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px #aaa;
-        display: none;
-    }
-
-    /* ⬇⬇⬇ تحسين عرض الصور ⬇⬇⬇ */
-    .images {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 10px;
-        margin-top: 10px;
-    }
-
-    .images img {
-        width: 100%;
-        height: 110px;
-        object-fit: cover;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-    }
-    /* ⬆⬆⬆ تحسين عرض الصور ⬆⬆⬆ */
-
-    .btns button {
-        width: 32%;
-        display: inline-block;
-    }
-
-    .editBtn { background: #f1c40f; }
-    .doneBtn { background: #27ae60; }
-    .delBtn  { background: #e74c3c; }
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
+    <style>
+.container{
+    height: 90vh;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 0 auto;
+  padding: 0;
 
-<div class="form-container">
+   
+}
+.med{
+background-color: black;
+height: 20vh;
+margin: 0 auto;
+margin-top: 50px;
+border-radius: 20px;
 
-    <h2 style="text-align:center;">نموذج طلبية</h2>
+color: aliceblue;
 
-    <label>بحث برقم الهاتف</label>
-    <input type="text" id="searchPhone" placeholder="رقم الهاتف" oninput="searchOrder()">
+width: 90%;
+display: flex;
+}
+.mede{
+  height: 60vh;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 0 auto;
+  padding: 0;
+background-color: black;
+width: 90%;
+margin-top: 10px;
+color: aliceblue;
+}
 
-    <hr><br>
+.logo{
+    background-color: aliceblue;
+    height: 15vh;
+    width: 35vw;
+    margin: 15px;
+    border-radius: 100%;
+}
+.hda{
+ background-color: aliceblue;
+    height: 12vh;
+    width: 30vw; 
+    margin: 15px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+img{
+    width: inherit;
+    height: inherit;
+}
+hr{width: 55%;}
+.hh{
+    width: 60vw;
+    height: 30vh;
+    background-color: rgb(27, 31, 34);
+margin-top: 10vh;
+margin:0 auto;
+margin-top: 20px;
+border-radius: 100%;
+}
+.hh img{
+    width: inherit;
+    height: inherit;
+   border-radius: inherit;
+}
+.nn{
+    text-align: center;
+    width: 100%;
+    height: 5vh;
+  margin-top: 10px;
+}
+.nn input{
+margin: 20px;
 
-    <label>الاسم الكامل</label>
-    <input type="text" id="name">
+}
+    </style>
+  <div class="container">
+<div class="med">
+     <div class="logo"><img src="LOGO TO7FA.ico" alt=""></div>
+ <div class="hda">
+  <img src="home.png" alt="">
+ </div>
 
-    <label>رقم الهاتف</label>
-    <input type="tel" id="phone">
-
-    <label>تفاصيل الطلبية</label>
-    <textarea id="details" rows="3"></textarea>
-
-    <label>موعد التسليم</label>
-    <input type="date" id="time">
-
-    <label>المبلغ المتفق عليه</label>
-    <input type="number" id="price">
-
-    <label>الدفعة الأولى</label>
-    <input type="number" id="firstPay" oninput="calcRemain()">
-
-    <label>المبلغ المتبقي</label>
-    <input type="number" id="remain" readonly style="background:#eee;">
-
-    <label>صور الطلبية</label>
-    <input type="file" id="images" accept="image/*" multiple>
-
-    <button onclick="saveOrder()">حفظ الطلبية</button>
 </div>
 
-<!-- قائمة الطلبات -->
-<div id="ordersList" style="margin-top:25px;"></div>
+<div class="mede">
 
-<!-- تفاصيل الطلبية -->
-<div id="detailsBox"></div>
+<div class="hh">
+<img src="photo.jpg" alt="">
+</div>
+<hr>
+<div class="nn">
+   
+<input placeholder="+21354210..." type="text" name="" id="">
+
+ <input placeholder="+21354210..." type="text" name="" id=""> 
+</div>
+</div>
 
 
-<script>
-
-let orders = [];
-let currentIndex = -1;
-
-// تحميل التخزين
-if (localStorage.getItem("orders")) {
-    orders = JSON.parse(localStorage.getItem("orders"));
-}
-displayOrders();
-
-function saveStorage() {
-    localStorage.setItem("orders", JSON.stringify(orders));
-}
-
-// حساب المتبقي
-function calcRemain() {
-    let price = Number(document.getElementById("price").value);
-    let first = Number(document.getElementById("firstPay").value);
-    document.getElementById("remain").value = price - first;
-}
-
-// تحويل الصور Base64
-function convertImages(files, callback) {
-    let images = [];
-    let count = files.length;
-
-    if (count === 0) { callback(images); return; }
-
-    for (let file of files) {
-        let reader = new FileReader();
-        reader.onload = function(e) {
-            images.push(e.target.result);
-            count--;
-            if (count === 0) callback(images);
-        };
-        reader.readAsDataURL(file);
-    }
-}
-
-// حفظ الطلبية
-function saveOrder() {
-    let files = document.getElementById("images").files;
-
-    convertImages(files, function(imgArray) {
-
-        let order = {
-            name: document.getElementById("name").value,
-            phone: document.getElementById("phone").value,
-            details: document.getElementById("details").value,
-            time: document.getElementById("time").value,
-            price: Number(document.getElementById("price").value),
-            firstPay: Number(document.getElementById("firstPay").value),
-            remain: Number(document.getElementById("remain").value),
-            images: imgArray,
-            delivered: false
-        };
-
-        if (!order.phone) return;
-
-        orders.push(order);
-        saveStorage();
-        displayOrders();
-        clearFields();
-    });
-}
-
-// مسح الخانات
-function clearFields() {
-    document.getElementById("name").value = "";
-    document.getElementById("phone").value = "";
-    document.getElementById("details").value = "";
-    document.getElementById("time").value = "";
-    document.getElementById("price").value = "";
-    document.getElementById("firstPay").value = "";
-    document.getElementById("remain").value = "";
-    document.getElementById("images").value = "";
-}
-
-// عرض الطلبات
-function displayOrders(list = orders) {
-    let box = document.getElementById("ordersList");
-    box.innerHTML = "";
-
-    list.forEach((o, i) => {
-        box.innerHTML += `
-            <div class="order-item" onclick="showDetails(${i})">
-                <strong>${o.name}</strong> - ${o.phone}<br>
-                المتبقي: ${o.remain} دج
-            </div>
-        `;
-    });
-}
-
-// عرض التفاصيل
-function showDetails(i) {
-    currentIndex = i;
-    let o = orders[i];
-    let box = document.getElementById("detailsBox");
-
-    box.style.display = "block";
-
-    box.innerHTML = `
-        <h3>تفاصيل الطلبية</h3>
-        <p><strong>الاسم:</strong> ${o.name}</p>
-        <p><strong>الهاتف:</strong> ${o.phone}</p>
-        <p><strong>التسليم:</strong> ${o.time}</p>
-        <p><strong>التفاصيل:</strong> ${o.details}</p>
-        <p><strong>المبلغ:</strong> ${o.price}</p>
-        <p><strong>الدفعة الأولى:</strong> ${o.firstPay}</p>
-        <p><strong>المتبقي:</strong> ${o.remain}</p>
-
-        <h3>الصور</h3>
-        <div class="images">
-            ${o.images.map(img => `<img src="${img}">`).join("")}
-        </div>
-
-        <div class="btns">
-            <button class="editBtn" onclick="editOrder()">تعديل</button>
-            <button class="doneBtn" onclick="finishOrder()">تسليم</button>
-            <button class="delBtn" onclick="deleteOrder()">حذف</button>
-        </div>
-    `;
-}
-
-// تعديل الطلبية
-function editOrder() {
-    let o = orders[currentIndex];
-
-    document.getElementById("name").value = o.name;
-    document.getElementById("phone").value = o.phone;
-    document.getElementById("details").value = o.details;
-    document.getElementById("time").value = o.time;
-    document.getElementById("price").value = o.price;
-    document.getElementById("firstPay").value = o.firstPay;
-    document.getElementById("remain").value = o.remain;
-
-    document.getElementById("detailsBox").style.display = "none";
-
-    orders.splice(currentIndex, 1);
-    saveStorage();
-    displayOrders();
-}
-
-// تسليم الطلبية
-function finishOrder() {
-    orders[currentIndex].delivered = true;
-    saveStorage();
-    displayOrders();
-
-    document.getElementById("detailsBox").style.display = "none";
-}
-
-// حذف الطلبية
-function deleteOrder() {
-    orders.splice(currentIndex, 1);
-    saveStorage();
-    displayOrders();
-
-    document.getElementById("detailsBox").style.display = "none";
-}
-
-// البحث
-function searchOrder() {
-    let text = document.getElementById("searchPhone").value;
-    let filtered = orders.filter(o => o.phone.includes(text));
-    displayOrders(filtered);
-}
-
-</script>
-
+  </div>
 </body>
 </html>
