@@ -305,6 +305,67 @@ padding: 10px;
 transition: 0.3s;
   font-size: 0%;
 }
+
+
+  .contai{
+    margin-top: 50px;
+        width: 95%;
+        height: 50vh;
+        border:  1px solid ;
+        margin:  0 auto;
+        margin-top: 20vh;
+        background-color: rgba(0, 0, 0, 0.178);
+       
+    }
+    .div1{
+        width: 50px;
+        height:50px;
+        background-color: rgb(0, 0, 0);
+        margin:10px;
+           transition: 0.3s;
+           border-radius: 10px;
+           position: relative;
+             margin:  auto;
+    }
+      .div2{
+        transition: 0.3s;
+        width: 50px;
+        height:50px;
+        background-color: rgb(0, 0, 0);
+         margin: 10px;
+         border-radius: 10px;
+           margin:  auto;
+    }
+      .div3{
+        width: 50px;
+        height:50px;
+        background-color: rgb(0, 0, 0);
+         margin:10px;
+         border-radius: 10px;
+         margin:  auto;
+       
+       
+    }
+    .hl{
+    
+        width: 90%;
+        height: 10vh;
+   display: flex;
+   background-color: rgb(7, 7, 7);
+
+margin: 10px auto;
+  border-radius: 10px;
+            transition: 0.3s;
+
+    }
+    img{
+
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+     
+
+    }
 }
 
     </style>
@@ -346,6 +407,8 @@ transition: 0.3s;
 <img id="im3" class="m" src="im1.jpg" alt="">
 
 </div>
+
+
 </div>
 
 
@@ -362,8 +425,17 @@ transition: 0.3s;
 
 
 
+  
+   
+
+
 </div>
 
+    <div class="hl" id="alo">
+<div class="div1" id="div1" onclick="div1()"> <img src="samsung.jpg" alt=""></div>
+<div class="div2" id="div2" onclick="div2()"><img src="im1.jpg" alt=""></div>
+    <div class="div3" id="div3" onclick="div3()"><img src="photo 22.jpg" alt=""></div>
+</div>
 <div  class="lang">
 <h1 onclick="la()" style="font-size: 5vw;" >changer de langue</h1>
 
@@ -376,11 +448,101 @@ transition: 0.3s;
 </div>
 </div>
 
+
+  
 </div>
 </div>
 
+
+
+
+
   </div>
 <script>
+
+      function div1(){
+        let div1=document.getElementById("div1");
+            let div2=document.getElementById("div2");
+let div3=document.getElementById ("div3");
+let ihh=document.getElementById ("alo");
+ihh.style.height="50vh";
+
+div1.style.margin="auto";
+div2.style.margin="auto";
+div3.style.margin="auto";
+
+div2.style.marginTop="20vh"
+div2.style.marginTop="20vh"
+div3.style.marginTop="20vh";
+
+div1.style.width="150px";
+div1.style.height="30vh";
+
+div2.style.width="70px";
+div2.style.height="70px";
+
+div3.style.width="40px";
+div3.style.height="40px";
+
+}
+
+    function div2(){
+        let div1=document.getElementById("div1");
+            let div2=document.getElementById("div2");
+let div3=document.getElementById ("div3");
+
+
+let alo=document.getElementById ("alo");
+alo.style.height ="50vh";
+
+div2.style.marginTop="20vh"
+div2.style.marginTop="20vh"
+div3.style.marginTop="20vh";
+
+div2.style.width="150px";
+div2.style.height="30vh";
+
+div1.style.margin="auto";
+div2.style.margin="auto";
+div3.style.margin="auto";
+
+div1.style.width="70px";
+div1.style.height="70px";
+
+div3.style.width="40px";
+div3.style.height="40px";
+
+}
+
+
+
+    function div3(){
+        let div1=document.getElementById("div1");
+            let div2=document.getElementById("div2");
+let div3=document.getElementById ("div3");
+
+let alo=document.getElementById ("alo");
+alo.style.height ="50vh";
+
+div2.style.marginTop="20vh"
+div2.style.marginTop="20vh"
+div3.style.marginTop="20vh";
+
+div1.style.margin="auto";
+div2.style.margin="auto";
+div3.style.margin="auto";
+
+
+div3.style.width="150px";
+div3.style.height="30vh";
+
+div2.style.width="70px";
+div2.style.height="70px";
+
+div1.style.width="40px";
+div1.style.height="40px";
+
+}
   
   let w=false 
   function la(){
