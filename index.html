@@ -7,6 +7,8 @@
 </head>
 <body>
     <style>
+
+      
 .container{
     height: 95vh;
     border-radius: 10px;
@@ -18,7 +20,8 @@ display: flex;
 flex-wrap: wrap;
 overflow: auto;
    
-}
+}  
+
 .med{
 background-color: black;
 height: 20vh;
@@ -52,6 +55,7 @@ color: aliceblue;
 }
 .hda{
  background-color: aliceblue;
+
     height: 12vh;
     width: 30vw; 
     margin: 15px;
@@ -134,15 +138,165 @@ background-color: rgb(231, 135, 9);
 .m{width: 0%;
   transition: 0.6s;
 }
+@media(max-width:600px){
+ 
+.container{
+    height: 95vh;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 0 auto;
+  padding: 0;
+font-size: 80%;
+display: flex;
+flex-wrap: wrap;
+overflow: auto;
+   
+}  
+
+.med{
+background-color: black;
+height: 20vh;
+margin: 0 auto;
+margin-top: 50px;
+border-radius: 20px;
+
+color: aliceblue;
+
+width: 90%;
+display: flex;
+}
+.mede{
+  height: 60vh;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 0 auto;
+  padding: 0;
+background-color: black;
+width: 90%;
+margin-top: -40px;
+color: rgb(237, 247, 255);
+}
+
+.logo{
+    background-color: aliceblue;
+    height: 15vh;
+    width: 35vw;
+    margin: 15px;
+    border-radius: 100%;
+    filter: drop-shadow(0px 0px 5px rgb(245, 243, 243));
+}
+.hda{
+ background-color: aliceblue;
+
+    height: 12vh;
+    width: 30vw; 
+    margin: 15px;
+    border-radius: 10px;
+    margin-top: 30px;
+    color: black;
+    font-size: 70%;
+    text-align: center;
+}
+img{
+    width: inherit;
+ height:inherit;
+     border-radius:inherit;
+}
+hr{width: 55%;}
+
+.nn{
+    text-align: center;
+    width: 100%;
+    height: 5vh;
+  margin-top: 10px;
+  transition: 0.5S;
+ 
+
+}
+.hh{
+    width: 80vw;
+    height: 30vh;
+    background-color: rgb(39, 47, 54);
+ border-radius: 10px;
+margin: 0 auto;
+display: flex;
+margin-top: 20px;
+}
+.im1{
+  width: 60%;
+  height: 25%;
+  background-color: aliceblue;
+  margin: 10px;
+  border-radius: 10px;
+    transition: 0.3s;
+
+    
+    margin-left: 25px;
+   
+
+}
+
+.im2{
+
+  width: 60%;
+  height: 25%;
+background-color: rgb(231, 135, 9);
+  margin: 10px;
+  border-radius: 10px;
+    transition: 0.3s;
+    margin-left: 25px;
+}
+.im3{
+  width: 60%;
+  height: 25%;
+  background-color: aqua;
+    margin: 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+    margin-left: 25px;
+}
+.image{
+  width: 35vw;
+  height: 25vh;
+  background-color: rgb(90, 90, 94);
+  margin: 10px;
+  margin-left: 20%;
+  border-radius: 10px;
+  display: flex;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.but{
+  width: 20vw;
+  height: 30vh;
+}
+.imm1{
+ 
+  height:100%;
+  border-radius: inherit;
+}
+.m{width: 0%;
+  transition: 0.6s;
+}
+
+.hd{
+padding: 10px;
+ background-color: aliceblue;
+ border-radius: 10px;
+ color: black;
+}
+}
+
     </style>
   <div class="container">
 <div class="med">
-     <div class="logo"><img src="LOGO TO7FA.ico" alt=""></div>
+     <div class="logo"><img src="LOGO TO7FA.png" alt=""></div>
  <div class="hda">
  <h1>MARKET</h1>
 
  <h2>PLACE</h2>
- <h3>TO7FA</h3>
+ <h3>SAMSUNG</h3>
  </div>
 
 </div>
@@ -150,35 +304,56 @@ background-color: rgb(231, 135, 9);
 <div class="mede">
 <div class="hh">
   <div class="but">
-<div class="im1" id="kli1" > <img onclick="im1()" class="imm1" src="photo.jpg" alt=""></div>
+<div class="im1" id="kli1" >  <img onclick="im1()" class="imm1" src="photo 22.jpg" alt=""></div>
 <div class="im2" id="kli2" onclick="im2()"> <img  class="imm1" src="samsung.jpg" alt=""></div>
-<div class="im3" id="kli3" onclick="im3()"><img  class="imm1" src="im1.webp" alt=""></div>
+<div class="im3" id="kli3" onclick="im3()"><img  class="imm1" src="im1.jpg" alt=""></div>
 </div>
-<div class="image">
-   <img id="im1" class="m" src="photo.jpg" alt="">
+<div class="image" id="image">
+
+
+<div class="hd" id="hd" >
+ <h1>MARKET</h1>
+
+ <h2>PLACE</h2>
+ <h3>SAMSUNG</h3>
+ </div>
+
+
+
+
+   <img id="im1" class="m" src="photo 22.jpg" alt="">
 <img id="im2" class="m" src="samsung.jpg" alt="">
-<img id="im3" class="m" src="im1.webp" alt="">
+<img id="im3" class="m" src="im1.jpg" alt="">
 
 </div>
 </div>
-<hr>
+
 
 <div class="nn">
-<h1>IPHON 13PRO MAX</h1>
+<h1 id="txt">IPHON 13PRO MAX</h1>
+
 
 <hr>
-<h2>HICHAM</h2>
+<h2 style="color: rgb(72, 255, 0);">ACHAT</h2>
 <hr>
-<p>HICHAM</p>
+<p style="color: rgb(255, 72, 0);">Plus d'informations</p>
+<hr>
 </div>
 </div>
 
   </div>
 <script>
   function im1(){
+    let txt=document.getElementById("txt");
+    let hd=document.getElementById ("hd");
+    let image=document.getElementById("image");
 let im1=document.getElementById ("im1");
 let im2=document.getElementById ("im2");
 let im3=document.getElementById ("im3");
+hd.style.padding="0";
+image.style.padding="3vw";
+image.style.fontSize="0%";
+txt.innerHTML=" PHOTO-HICHAM"
 im1.style.width="100%";
 im2.style.width="0%";
 im3.style.width="0%";
@@ -186,31 +361,46 @@ im3.style.width="0%";
 let kli1=document.getElementById ("kli1");
 let kli2=document.getElementById ("kli2");
 let kli3=document.getElementById ("kli3");
-kli1.style.marginLeft ="20px";
+kli1.style.marginLeft ="35px";
 kli2.style.marginLeft ="";
 kli3.style.marginLeft ="";
 
 
 }
    function im2(){
+    let txt=document.getElementById("txt");
+    let hd=document.getElementById ("hd");
+    let image=document.getElementById("image");
 let im1=document.getElementById ("im1");
 let im2=document.getElementById ("im2");
 let im3=document.getElementById ("im3");
+hd.style.padding="0";
+image.style.padding="3vw";
+image.style.fontSize="0%";
+txt.innerHTML=" SAMSUNG S24 ULTRA "
 im1.style.width="0%";
 im2.style.width="100%";
 im3.style.width="0%";
+
 
 let kli1=document.getElementById ("kli1");
 let kli2=document.getElementById ("kli2");
 let kli3=document.getElementById ("kli3");
 kli1.style.marginLeft ="";
-kli2.style.marginLeft ="20px";
+kli2.style.marginLeft ="35px";
 kli3.style.marginLeft ="";
 }
   function im3(){
+    let txt=document.getElementById("txt");
+    let hd=document.getElementById ("hd");
+    let image=document.getElementById("image");
 let im1=document.getElementById ("im1");
 let im2=document.getElementById ("im2");
 let im3=document.getElementById ("im3");
+hd.style.padding="0";
+image.style.padding="3vw";
+image.style.fontSize="0%";
+txt.innerHTML="IPHON 11 PRO MAX  "
 im1.style.width="0%";
 im2.style.width="0%";
 im3.style.width="100%";
@@ -220,7 +410,7 @@ let kli2=document.getElementById ("kli2");
 let kli3=document.getElementById ("kli3");
 kli1.style.marginLeft ="";
 kli2.style.marginLeft ="";
-kli3.style.marginLeft ="20px";
+kli3.style.marginLeft ="35px";
 }
 
 </script>
