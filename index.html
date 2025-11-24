@@ -157,13 +157,23 @@ overflow: auto;
 background-color: black;
 height: 20vh;
 margin: 0 auto;
-margin-top: 50px;
+margin-top: 10px;
 border-radius: 20px;
-
 color: aliceblue;
 
 width: 90%;
 display: flex;
+}
+.lang{
+background-color: black;
+height: 20vh;
+margin: 0 auto;
+margin-top: 10px;
+border-radius: 20px;
+color: aliceblue;
+text-align: center;
+width: 90%;
+
 }
 .mede{
   height: 60vh;
@@ -173,7 +183,7 @@ display: flex;
   padding: 0;
 background-color: black;
 width: 90%;
-margin-top: -40px;
+margin-top: 10PX;
 color: rgb(237, 247, 255);
 }
 
@@ -286,6 +296,15 @@ padding: 10px;
  border-radius: 10px;
  color: black;
 }
+.arab{
+  width: inherit;
+  height: 10vh;
+
+  margin: 0 auto;
+  border-radius: 10px;
+transition: 0.3s;
+  font-size: 0%;
+}
 }
 
     </style>
@@ -313,6 +332,7 @@ padding: 10px;
 
 <div class="hd" id="hd" >
  <h1>MARKET</h1>
+ 
 
  <h2>PLACE</h2>
  <h3>SAMSUNG</h3>
@@ -330,7 +350,7 @@ padding: 10px;
 
 
 <div class="nn">
-<h1 id="txt">IPHON 13PRO MAX</h1>
+<h1 id="txt">SAMSUNG-MOBILE</h1>
 
 
 <hr>
@@ -339,10 +359,44 @@ padding: 10px;
 <p style="color: rgb(255, 72, 0);">Plus d'informations</p>
 <hr>
 </div>
+
+
+
+</div>
+
+<div  class="lang">
+<h1 onclick="la()" style="font-size: 5vw;" >changer de langue</h1>
+
+<div id="arab" class="arab">
+<hr>
+<h2>arab</h2>
+<hr>
+<h2>Français</h2>
+<hr>
+</div>
+</div>
+
+</div>
 </div>
 
   </div>
 <script>
+  
+  let w=false 
+  function la(){
+ let arab=document.getElementById("arab");
+  
+    if (w){
+
+  arab.style.fontSize="0%";
+    }
+    else{
+  arab.style.fontSize="95%";
+    }
+    w=!w;
+  }
+ 
+
   function im1(){
     let txt=document.getElementById("txt");
     let hd=document.getElementById ("hd");
@@ -353,7 +407,7 @@ let im3=document.getElementById ("im3");
 hd.style.padding="0";
 image.style.padding="3vw";
 image.style.fontSize="0%";
-txt.innerHTML=" PHOTO-HICHAM"
+txt.innerHTML="SAMSUNG S22 ULTRA "
 im1.style.width="100%";
 im2.style.width="0%";
 im3.style.width="0%";
@@ -400,7 +454,7 @@ let im3=document.getElementById ("im3");
 hd.style.padding="0";
 image.style.padding="3vw";
 image.style.fontSize="0%";
-txt.innerHTML="IPHON 11 PRO MAX  "
+txt.innerHTML="SAMSUNG S22 ULTRA   "
 im1.style.width="0%";
 im2.style.width="0%";
 im3.style.width="100%";
